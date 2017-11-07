@@ -56,12 +56,13 @@ def getLight():
     ir = data[3] * 256 + data[2]
     data = bus.read_i2c_block_data(0x60, 0x2C, 2)
     uv = data[1] * 256 + data[0]
-    return (visible, ir, uv);
+    return (round(visible,0), round(ir,0), round(uv,0));
 
 def getTemp():
     bus = smbus.SMBus(1)
     bus.write_byte(0x76, 0x1E)
     time.sleep(0.5)
+    data1 = bus.read_i2c_block_data(0x76, 0xA2, 2)
     data2 = bus.read_i2c_block_data(0x76, 0xA4, 2)
     data3 = bus.read_i2c_block_data(0x76, 0xA6, 2)
     data4 = bus.read_i2c_block_data(0x76, 0xA8, 2)
@@ -111,4 +112,4 @@ def getTemp():
     data1 = 0
     D3 = data0 * 256 + data1
     humidity = (-6.0 + (125.0 * (D3 / 65536.0)))
-    return (humidity, pressure, cTemp);
+    return (round(humidity,0), round(pressure,0), round(cTemp,1));
