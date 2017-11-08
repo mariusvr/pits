@@ -8,7 +8,7 @@ ozone = sensor.getOzone()
 print "Humidity is : " + humidity + " %"
 print "Pressure is : " + pressure + " mbar"
 print "Temperature is : " + temperature + " C"
-print "Visible light is : " visible + " lux"
+print "Visible light is : " + visible + " lux"
 print "IR light is : " + ir + " lux"
 print "UV light is : " + uv + " lux"
 print "Ozone concentration is : " + ozone + " ppm"
