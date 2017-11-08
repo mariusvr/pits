@@ -6,7 +6,7 @@ def getOzone():
     data = bus.read_i2c_block_data(0x50, 0x00, 2)
     raw_adc = (data[0] & 0x0F) * 256 + data[1]
     ppm = (1.99 * raw_adc) / 4096.0 + 0.01
-    return round(ppm,1);
+    return str(round(ppm,1));
 
 def getLight():
     bus = smbus.SMBus(1)
@@ -56,7 +56,7 @@ def getLight():
     ir = data[3] * 256 + data[2]
     data = bus.read_i2c_block_data(0x60, 0x2C, 2)
     uv = data[1] * 256 + data[0]
-    return (round(visible,0), round(ir,0), round(uv,0));
+    return (str(round(visible,0)), str(round(ir,0)), str(round(uv,0)));
 
 def getTemp():
     bus = smbus.SMBus(1)
@@ -112,4 +112,4 @@ def getTemp():
     data1 = 0
     D3 = data0 * 256 + data1
     humidity = (-6.0 + (125.0 * (D3 / 65536.0)))
-    return (round(humidity,0), round(pressure,0), round(cTemp,1));
+    return (str(round(humidity,0)), str(round(pressure,0)), str(round(cTemp,1)));

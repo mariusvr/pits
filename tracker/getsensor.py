@@ -5,22 +5,22 @@ ozone = sensor.getOzone()
 (humidity, pressure, temperature) = sensor.getTemp()
 (visible,ir,uv) = sensor.getLight()
 
-print "Humidity is : %.0f %%" %humidity
-print "Pressure is : %.0f mbar" %pressure
-print "Temperature is : %.1f C" %temperature
-print "Visible light is : %.0f lux" %visible
-print "IR light is : %.0f lux" %ir
-print "UV light is : %.0f lux" %uv
-print "Ozone concentration is : %.0f ppm" %ozone
+print "Humidity is : " + humidity + " %"
+print "Pressure is : " + pressure + " mbar"
+print "Temperature is : " + temperature + " C"
+print "Visible light is : " %visible + " lux"
+print "IR light is : " + ir + " lux"
+print "UV light is : " + uv + " lux"
+print "Ozone concentration is : " + ozone + " ppm"
 
 baseURL = "https://api.thingspeak.com/update?api_key=KA8898GKT8TYZUYQ"
-baseURL += "&field1=" + str(round(temperature,1))
-baseURL += "&field2=" + str(round(humidity,0))
-baseURL += "&field3=" + str(round(pressure,0))
-baseURL += "&field4=" + str(round(ozone,0))
-baseURL += "&field5=" + str(round(uv,0))
-baseURL += "&field6=" + str(round(visible,0))
-baseURL += "&field7=" + str(round(ir,0))
+baseURL += "&field1=" + temperature
+baseURL += "&field2=" + humidity
+baseURL += "&field3=" + pressure
+baseURL += "&field4=" + ozone
+baseURL += "&field5=" + uv
+baseURL += "&field6=" + visible
+baseURL += "&field7=" + ir
 urllib2.urlopen(baseURL).read()
 
 
