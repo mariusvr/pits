@@ -6,7 +6,7 @@ def getOzone():
     data = bus.read_i2c_block_data(0x50, 0x00, 2)
     raw_adc = (data[0] & 0x0F) * 256 + data[1]
     ppm = (1.99 * raw_adc) / 4096.0 + 0.01
-    return str(round(ppm,1));
+    return str(round(ppm,0));
 
 def getLight():
     bus = smbus.SMBus(1)
