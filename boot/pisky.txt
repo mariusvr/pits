@@ -18,7 +18,7 @@ external_data=/home/pi/pits_sender/tracker/sensordata
 
 [LORA0]
 LORA_Payload_0=ZL1AB0
-LORA_Frequency_0=434.100
+LORA_Frequency_0=433.100
 LORA_Mode_0=6
 LORA_low_width_0=320
 LORA_low_height_0=240
