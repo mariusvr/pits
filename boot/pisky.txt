@@ -13,7 +13,7 @@ full_high_height=960
 full_image_period=60
 landing_prediction=N
 image_packets=4
-external_data=/home/pi/pits_sender/tracker/sensordata
+external_data=/home/pi/pits/tracker/sensordata
 
 
 [LORA0]
