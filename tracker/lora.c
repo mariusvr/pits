@@ -620,7 +620,7 @@ void CheckForPacketOnListeningChannels(struct TGPS *GPS)
 						{
 							// SSDV Uplink message
 							printf("SSDV uplink message %s", Message);
-							ProcessSSDVUplinkMessage(LORA_CHANNEL+LoRaChannel, Message);
+							ProcessSSDVUplinkMessage(LORA_CHANNEL+1, Message);
 						}
 #						ifdef EXTRAS_PRESENT
 							else if (ProcessExtraMessage(LoRaChannel, Message, Bytes, GPS))
