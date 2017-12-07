@@ -630,7 +630,13 @@ void CheckForPacketOnListeningChannels(struct TGPS *GPS)
 #						endif	
 						else
 						{
-							printf("Unknown message %02Xh\n", Message[0]);
+							printf("Unknown message %s\n", Message);
+
+				            Process p = new Process();
+				            p.StartInfo.UseShellExecute = false;
+				            p.StartInfo.FileName = "/usr/bin/python";
+				            p.StartInfo.Arguments = "/home/pi/testgpio.py ";
+				            p.Start();
 						}
 					}
 				}
