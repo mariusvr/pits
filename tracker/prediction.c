@@ -87,6 +87,8 @@ void *PredictionLoop(void *some_void_ptr)
 	PreviousLatitude = 0;
 	PreviousLongitude = 0;
 	PreviousAltitude = 0;
+	ReleaseTeddy = 0;
+	ReleasePlane = 0;
 	
 	GPS->CDA = Config.cd_area;
 
@@ -101,6 +103,26 @@ void *PredictionLoop(void *some_void_ptr)
 			unsigned long Altitude, DistanceInSlot;
 			char Temp[200];
 			
+			if ((GPS->Altitude > Config.TeddyAltitude)
+			{
+				if (ReleaseTeddy == 0)
+				{
+					ReleaseTeddy = 1;
+					popen("/usr/bin/python /home/pi/releaseteddy.py", "r");
+				}
+
+			}
+
+			if ((GPS->Altitude > Config.PlaneAltitude)
+			{
+				if (ReleasePlane == 0)
+				{
+					ReleasePlane = 1;
+					popen("/usr/bin/python /home/pi/releaseplane.py", "r");
+				}
+
+			}
+
 			if ((GPS->FlightMode >= fmLaunched) && (GPS->FlightMode < fmLanded))
 			{
 				

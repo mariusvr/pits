@@ -9,6 +9,16 @@ python savesensor.py &
 #python3 webstuff.py
 while :
 do
+
+    python=`ps aux | grep -i "python " | grep -v "grep" | wc -l`
+    if [ $python -ge 1 ]
+       then
+            echo "python is running"
+       else
+            echo "python is not running, restarting"
+            python /home/pi/pits/tracker/savesensor.py  > /dev/null &
+    fi
+    
 	sudo ./tracker
 	sleep 5
 done

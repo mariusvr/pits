@@ -631,12 +631,18 @@ void CheckForPacketOnListeningChannels(struct TGPS *GPS)
 						else
 						{
 							printf("Unknown message %s\n", Message);
+                            if (strstr((char *)Message, "releaseteddy") != NULL )
+                            {
+                                popen("/usr/bin/python /home/pi/releaseteddy.py", "r");
+                            }
 
-				            Process p = new Process();
-				            p.StartInfo.UseShellExecute = false;
-				            p.StartInfo.FileName = "/usr/bin/python";
-				            p.StartInfo.Arguments = "/home/pi/testgpio.py ";
-				            p.Start();
+                            if (strstr((char *)Message, "releaseplane") != NULL )
+                            {
+                                popen("/usr/bin/python /home/pi/releaseplane.py", "r");
+                            }
+
+
+
 						}
 					}
 				}

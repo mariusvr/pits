@@ -150,6 +150,10 @@ void LoadConfigFile(struct TConfig *Config)
 	Config->EnableTelemetryLogging = ReadBooleanFromString(fp, "logging", "Telemetry");
 	if (Config->EnableTelemetryLogging) printf("Telemetry Logging enabled\n");
 	
+
+	Config->releaseteddy = ReadInteger(fp, "releaseteddy", -1, 0, 0);
+	Config->releaseplane = ReadInteger(fp, "releaseplane", -1, 0, 0);
+
 	Config->TelemetryFileUpdate = ReadInteger(fp, "telemetry_file_update", -1, 0, 0);
 	if (Config->TelemetryFileUpdate > 0)
 	{
