@@ -4,21 +4,13 @@ cd /home/pi/pits/tracker
 echo none | sudo tee /sys/class/leds/led0/trigger
 echo 1 | sudo tee /sys/class/leds/led0/brightness
 sudo ./camera &
-python savesensor.py &
+sudo ./startsensor &
+
+
 #python3 astro_led.py &
 #python3 webstuff.py
 while :
-do
-
-    python=`ps aux | grep -i "python " | grep -v "grep" | wc -l`
-    if [ $python -ge 1 ]
-       then
-            echo "python is running"
-       else
-            echo "python is not running, restarting"
-            python /home/pi/pits/tracker/savesensor.py  > /dev/null &
-    fi
-    
+do   
 	sudo ./tracker
 	sleep 5
 done
